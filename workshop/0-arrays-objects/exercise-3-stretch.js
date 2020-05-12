@@ -23,3 +23,18 @@ let mostPopularFood = [
 // After all the foods have been logged, the program should end.
 //
 // HINT: You'll need to use `setInterval` and `clearInterval`.
+
+// initialize index
+let index = 9;
+
+// 1 second interval
+let foodInterval = setInterval(function() {
+  // log current element
+  console.log(`#${index + 1} - ${mostPopularFood[index]}`);
+  // decrement index
+  index--;
+  // stop interval after last array element
+  if (index === -1) {
+    clearInterval(foodInterval);
+  }
+}, 1000)

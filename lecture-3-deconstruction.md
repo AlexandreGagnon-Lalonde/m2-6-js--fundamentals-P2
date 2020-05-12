@@ -87,9 +87,11 @@ Convert the following to take advantage of deconstruction
 ```js
 let winningNumbers = [4, 17, 38, 9];
 
-let firstPlace = winningNumbers[0];
-let secondPlace = winningNumbers[0];
-let thirdPlace = winningNumbers[0];
+let [firstPlace, secondPlace, thirdPlace] = winningNumbers;
+
+// let firstPlace = winningNumbers[0];
+// let secondPlace = winningNumbers[0];
+// let thirdPlace = winningNumbers[0];
 
 console.log(
   `The top three winners are: ${firstPlace}, ${secondPlace}, ${thirdPlace}.`
@@ -106,8 +108,9 @@ let weatherData = {
 };
 
 function printWeather(data) {
+  let {city, weather, temperature} = data;
   console.log(
-    `It is ${data.weather} in ${data.city}, with a high of ${temperature}.`
+    `It is ${/*data.*/weather} in ${/*data.*/city}, with a high of ${temperature}.`
   );
 }
 
@@ -118,7 +121,7 @@ printWeather(weatherData);
 
 ```js
 function handleChange(event) {
-  let value = event.target.value;
+  let {value} = event.target;
   console.log(value);
 }
 
