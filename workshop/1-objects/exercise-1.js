@@ -19,6 +19,24 @@
 // A) console.log() your object.
 // B) console.log() a few of the values in the object.
 
+let me = {
+  name: {
+    first: 'Alexandre',
+    last: 'Gagnon-Lalonde'
+  },
+  age: 25,
+  city: 'Montreal',
+  siblings: 3,
+  petName: {
+    1: 'Cedric',
+    2: 'Mirou'
+  },
+  monthOfBirth: 'July'
+}
+
+console.log(me);
+console.log(`My name is ${me.name.first + ' ' + me.name.last}. I am ${me.age} years old and I have ${me.siblings} siblings`);
+
 //-------------------------------------------------
 
 // Exercise A
@@ -31,6 +49,14 @@
 //     - Pets (number of pets, names of pets, etc.)
 
 // HINT: You can just modify the object that you created before.
+
+me.favTvShow = 'Ozark';
+me.occupation = 'student';
+me.dateOfBirth = '19-07-1994';
+me.laptopBrand = 'MSI';
+me.calorieIntake = 3000;
+
+console.log(me);
 
 //-------------------------------------------------
 
@@ -47,7 +73,18 @@
 // HINT: Most movies have multiple actors. What data-structure do we use to
 // represent a collection of similar things?
 
-let favoriteMovie = {};
+let favoriteMovie = {
+  title: 'Gladiator',
+  director: 'Ridley Scott',
+  releaseYear: 2000,
+  rating: '8.5/10',
+  actors: {
+    main: 'Russell Crowe',
+    badGuy: 'Joaquin Phoenix',
+    someGirl: 'Connie Nielsen',
+    someGuy: 'Djimon Hounsou'
+  }
+};
 
 //-------------------------------------------------
 
@@ -62,8 +99,10 @@ const person = {
   hometown: 'somewhere',
 };
 
-person[age]; // => 26
-person.key; // => "Alyssa P. Hacker"
+person.age; // => 26
+person[key]; // => "Alyssa P. Hacker"
+console.log('person[key] :', person[key]);
+console.log('person.age :', person.age);
 
 //-------------------------------------------------
 
@@ -85,9 +124,11 @@ const alyssa = {
 };
 
 function fullName(person) {
-  // Your code here
+  let {first, middle, last} = person.name;
+  return `${first} ${middle} ${last}`
 }
 
+console.log(fullName(me));
 console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
 
 // Exercise E
@@ -109,7 +150,18 @@ const rick = {
 };
 
 function betterFullName(person) {
-  // Your code here
+  // grab an array of value from the person.name object
+  let namesArr = Object.values(person.name);
+  // initialize the name string
+  let nameStr = '';
+  // loop through name array and add value to string
+  namesArr.forEach(function(element) {
+    nameStr += ' ' + element;
+  })
+  // remove the first space in the string
+  nameStr = nameStr.substr(1);
+  return nameStr
 }
 
 console.log(betterFullName(rick)); // => "Rick Sanchez"
+console.log(betterFullName(me));

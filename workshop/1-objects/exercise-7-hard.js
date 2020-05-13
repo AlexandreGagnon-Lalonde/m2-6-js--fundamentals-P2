@@ -31,7 +31,7 @@ const favouriteDessertsGroupB = {
   colin: 'gummy bears',
   damien: 'child tears',
   ellicia: 'panda express',
-  fertrude: 'gummy bears'.
+  fertrude: 'gummy bears',
   glinda: 'pie',
   hethel: 'not applicable',
   irsula: 'rum cake',
