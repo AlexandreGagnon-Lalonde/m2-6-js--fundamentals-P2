@@ -18,3 +18,12 @@ const geometry = {
 //
 // Use that variable to look up the specified property in the `geometry` object.
 // Log it to the console:
+
+geometry.width;
+console.log(`geometry.width : ${geometry.width}`);
+
+geometry[myKey];
+console.log(`geometry[myKey] : ${geometry[myKey]}`);
+
+geometry['width'];
+console.log(`geometry[\'width\'] : ${geometry['width']}`);
