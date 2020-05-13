@@ -16,6 +16,16 @@ const people = [
 // `name` key does not have the same "shape" as the ones above, make sure you
 // change it to look like these).
 
+let me = {
+  name: {
+    first: 'Alexandre',
+    last: 'Gagnon-Lalonde'
+  },
+  age: 25
+}
+
+people.push(me);
+
 //-------------------------------------------------
 
 // Exercise 5.1
@@ -23,7 +33,16 @@ const people = [
 // Write a function that returns the average age of the `people` array.
 
 function avgAge(peopleArr) {
-  // Yuor code here
+  // initialize average
+  let average = 0;
+  // loop through each element
+  peopleArr.forEach(element => {
+    // add each age to average
+    average += element.age;
+  });
+  // divide average by amount of people
+  average = Math.floor(average / peopleArr.length);
+  return average
 }
 
 console.log(`Average age is ${avgAge(people)}.`);
@@ -37,7 +56,25 @@ console.log(`Average age is ${avgAge(people)}.`);
 // Can you make use of your `fullName` function here?
 
 function fullName(peopleArr) {
-  // Your code here
+  // initialize the names array
+  let names = [];
+  // loop through each person
+  peopleArr.forEach(element => {
+    // create an array of each name component
+    let nameArray = Object.keys(element.name);
+    // initialize each name
+    let nameString = '';
+    // loop through each name component
+    nameArray.forEach(item => {
+      // add each name component to the string
+      nameString += ' ' + element.name[item];
+    })
+    // remove first space
+    nameString = nameString.substr(1);
+    // add the string to the names array
+    names.push(nameString);
+  })
+  return names
 }
 
 console.log(fullName(people));
@@ -50,7 +87,17 @@ console.log(fullName(people));
 // returns an array of just the people that are older than the specified age..
 
 function olderPeople(peopleArr, age) {
-  // Your code here
+  // initialize a new empty array
+  let newArray = [];
+  // loop through each persons
+  peopleArr.forEach(element => {
+    // check if person is older
+    if (element.age > age) {
+      // add to array
+      newArray.push(element);
+    }
+  })
+  return newArray
 }
 
 console.log(olderPeople(people, 26));
