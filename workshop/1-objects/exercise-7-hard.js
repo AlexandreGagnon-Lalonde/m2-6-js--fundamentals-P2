@@ -143,10 +143,25 @@ order, and that's 100% OK).
 */
 
 function groupPeopleByDessert(dessertObject) {
-
+  let dessertKeysArray = Object.keys(dessertObject);
+  let dessertValueArray = Object.values(dessertObject);
+  let resultObject = {};
+  dessertValueArray.forEach(element => {
+    if (!resultObject[element]) {
+      resultObject[element] = [];
+    }
+  })
+  dessertKeysArray.forEach(element => {
+    resultObject[dessertObject[element]].push(element);
+  })
+  return resultObject
 }
 
 console.log(
-  'People grouped by dessert:',
+  'People grouped by dessert in Group B :',
   groupPeopleByDessert(favouriteDessertsGroupB)
+);
+console.log(
+  'People grouped by dessert in Group A :',
+  groupPeopleByDessert(favoriteDessertsGroupA)
 );
