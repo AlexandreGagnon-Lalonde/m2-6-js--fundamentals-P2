@@ -143,15 +143,21 @@ order, and that's 100% OK).
 */
 
 function groupPeopleByDessert(dessertObject) {
+  // object keys and values array
   let dessertKeysArray = Object.keys(dessertObject);
   let dessertValueArray = Object.values(dessertObject);
+  // initialize result object
   let resultObject = {};
+  // loop through object value array
   dessertValueArray.forEach(element => {
     if (!resultObject[element]) {
+      // for each different value initialize array
       resultObject[element] = [];
     }
   })
+  // loop through object keys array
   dessertKeysArray.forEach(element => {
+    // add every element to respective result object key
     resultObject[dessertObject[element]].push(element);
   })
   return resultObject
