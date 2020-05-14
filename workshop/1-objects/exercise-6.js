@@ -1,4 +1,4 @@
-/**
+/*
  * One of the most common tasks as a software developer is to "transform" data
  * from one form to another.
  *
@@ -20,17 +20,17 @@ let inputData = {
   motherAge: 35,
   motherStatus: 'worried',
   motherSuperpower1: null,
-  motherSuperpower1: null,
+  motherSuperpower2: null,
   bestFriendName: 'Mike Wheeler',
   bestFriendAge: 9,
   bestFriendStatus: 'frenetic',
   bestFriendSuperpower1: null,
-  bestFriendSuperpower1: null,
+  bestFriendSuperpower2: null,
   girlfriendName: 'Eleven',
   girlfriendAge: 9,
   girlfriendStatus: 'angry',
   girlfriendSuperpower1: 'telepathy',
-  girlfriendSuperpower1: 'multiverse portal sealing',
+  girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
 /*
@@ -87,8 +87,64 @@ For example, the main superpowers array should be:
 ⛔️ ['can-blink-lights', null]
 */
 
+function superpower(superpower1, superpower2) {
+  // initialize superpowers array
+  let superpowerArr = [];
+  // check if first superpower is null or not
+  if (superpower1) {
+    // add superpower
+    superpowerArr.push(superpower1);
+  }
+  // check if second superpower is null or not
+  if (superpower2) {
+    // add superpower
+    superpowerArr.push(superpower2);
+  }
+  return superpowerArr
+}
+
 function transformData(data) {
-  // Your code here
+  // initialize new object
+  let newData = {};
+  // principal data
+  newData.name = data.name;
+  newData.age = data.age;
+  newData.status = data.status;
+  // address object
+  newData.address = {};
+  newData.address.streetAddress = data.address1;
+  newData.address.city = data.addressCity;
+  newData.address.state = data.addressState;
+  newData.address.country = data.addressCountry;
+  // main superpowers
+  newData.superpowers = superpower(data.superpower1, data.superpower2);
+  // relationships
+  newData.relationships = [];
+  // add mother
+  newData.relationships.push({
+    type: "mother",
+    name: data.motherName,
+    age: data.motherAge,
+    status: data.motherStatus,
+    superpowers: superpower(data.motherSuperpower1, data.motherSuperpower2)
+  })
+  // add best friend
+  newData.relationships.push({
+    type: "best friend",
+    name: data.bestFriendName,
+    age: data.bestFriendAge,
+    status: data.bestFriendStatus,
+    superpowers: superpower(data.bestFriendSuperpower1, data.bestFriendSuperpower2)
+  })
+  // add girlfriend
+  newData.relationships.push({
+    type: "girlfriend",
+    name: data.girlfriendName,
+    age: data.girlfriendAge,
+    status: data.girlfriendStatus,
+    superpowers: superpower(data.girlfriendSuperpower1, data.girlfriendSuperpower2)
+  })
+  return newData
 }
 
 /*
