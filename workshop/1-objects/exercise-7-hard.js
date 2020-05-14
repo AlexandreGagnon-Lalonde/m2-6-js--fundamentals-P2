@@ -54,12 +54,59 @@ const favouriteDessertsGroupB = {
 // - Second, put them in order
 
 function sortDessertsByPopularity(dessertObject) {
-  // Write code
+  // grab all values from object and put in array
+  let dessertArray = Object.values(dessertObject);
+  // initialize new object
+  let newDessertObj = {};
+  // loop through new array
+  dessertArray.forEach(element => {
+    if (newDessertObj[element]) {
+      // add 1 to element count in new object
+      newDessertObj[element]++;
+    } else {
+      // initialize new object element
+      newDessertObj[element] = 1;
+    }
+  })
+  // new array with each values
+  let newDessertValueArray = Object.values(newDessertObj);
+  // new array with each keys
+  let newDessertKeyArray = Object.keys(newDessertObj)
+  // initialize results array
+  let dessertSorted = [];
+  // sort the values high to low
+  newDessertValueArray.sort((a, b) => {
+    if (a > b) {
+      return -1
+    } else {
+      return 1
+    }
+  })
+  // loop through object value array
+  newDessertValueArray.forEach(element => {
+    // loop through object key array
+    for (let i = 0; i < newDessertValueArray.length; i++) {
+      if (
+        // check if values are equal
+        newDessertObj[newDessertKeyArray[i]] === element && 
+        // check if key is not already in array
+        !dessertSorted.includes(newDessertKeyArray[i])
+      ) {
+        // add key to result array
+        dessertSorted.push(newDessertKeyArray[i]);
+      }
+    }
+  })
+  return dessertSorted
 }
 
 console.log(
   'Popular desserts in Group B:',
   sortDessertsByPopularity(favouriteDessertsGroupB)
+);
+console.log(
+  'Popular desserts in Group A:',
+  sortDessertsByPopularity(favoriteDessertsGroupA)
 );
 
 
